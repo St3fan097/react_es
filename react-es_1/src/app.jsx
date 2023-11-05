@@ -1,15 +1,14 @@
-import { HelloWorld } from "./hello";
+import { Welcome } from "./welcome";
+
 
 export function App() {
     return (
         <div>
-            <HelloWorld />
-           {/*  <HelloWorld /> */} 
+            <Welcome name="Stefano"/>    
         </div>
     )
 }
 
 
-/*Si possono utilizzare i componenti più volte poichè sono ideati per essere riutilizzabili.
-In alto ho insetito un secondo componente HelloWord che contiene sia la scritta Hello world che a sua volta la renderizzazione del componente nel file bellaGiornata
-quindi è possibile riutilizzare anche componenti che hanno altri componenti al suo interno */
+/*Se non specifico nesuuna prop name verrà visualizzato solo welcome o darà errore, 
+per sicurezza ho impostato un valore predefinito (guest) così se non è specificato uscirà di default "Welcome, Guest!*/
