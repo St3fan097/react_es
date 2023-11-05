@@ -1,3 +1,8 @@
+import { BellaGiornata } from "./bellaGiornata";
+
 export function HelloWorld () {
-    return <h2>Hello world</h2>
+    return <div>
+    <h2>Hello world</h2>
+    <BellaGiornata/>
+    </div>
 }
