@@ -1,10 +1,15 @@
-import { Welcome } from "./welcome";
+import { AlertClock } from "./alertClock";
+
 
 
 export function App() {
+  const mostraAvviso = (messaggio) => {
+    alert(messaggio);
+  };
+
     return (
         <div>
-            <Welcome name="Stefano" age="26"/>    
+        <AlertClock avviso={mostraAvviso} />  
         </div>
     )
 }
