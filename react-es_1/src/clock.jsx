@@ -8,7 +8,6 @@ export function Clock() {
         setInterval(() => {
             setDate(new Date())
         }, 1000)
-        // non ho inserito la funzione di pulizia perchè in questo caso non sono in StrictMode
     }, []);
 
     return (

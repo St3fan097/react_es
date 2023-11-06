@@ -15,7 +15,7 @@ export function Counter({ valoreIniziale, incremento }) {
     }
 
     useEffect(() => {
-        console.log(counter);   // non ho messo altre parentesi alla variabile counter per prendere solo il valore corrente
+        console.log(counter);
     })
 
     return (
