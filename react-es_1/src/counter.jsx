@@ -1,20 +1,28 @@
 import { useState } from "react"
+import { CounterDisplay } from "./counterDisplay";
 
-export function Counter ({valoreIniziale, incremento}){
-const[counter, setCounter]= useState(valoreIniziale);
+export function Counter({ valoreIniziale, incremento }) {
+    const [counter, setCounter] = useState(valoreIniziale);
 
-function incrementa(){
-    setCounter((val) => val + incremento);
-}
+    function incrementa() {
+        setCounter((val) => val + incremento);
+    }
+    function decrementa() {
+        setCounter((val) => val - incremento);
+    }
+    function reset() {
+        setCounter((val) => val = valoreIniziale);
+    }
 
-    return(
+
+    return (
 
         <div>
-            <h2>Conteggio {counter}</h2>
+            <CounterDisplay contatore={counter} />
             <button onClick={incrementa}>Incrementa</button>
+            <button onClick={decrementa}>Decrementa</button>
+            <button onClick={reset}>Reset</button>
         </div>
     )
 }
 
-/* è meglio passare come parametro una funzione per ottimizzare il codice,
-in caso di più chiamate garantisce che il valore corrente dello stato sia utilizzato per calcolare quello nuovo */
