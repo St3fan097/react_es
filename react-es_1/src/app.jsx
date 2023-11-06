@@ -1,15 +1,12 @@
-import { AlertClock } from "./alertClock";
+import { Counter } from "./counter";
 
 
 
 export function App() {
-  const mostraAvviso = (messaggio) => {
-    alert(messaggio);
-  };
 
     return (
         <div>
-        <AlertClock avviso={mostraAvviso} />  
+        <Counter valoreIniziale={0} incremento={1} />  
         </div>
     )
 }
