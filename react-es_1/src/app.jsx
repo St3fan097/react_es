@@ -10,7 +10,7 @@ export function App() {
         <div>
         <Counter valoreIniziale={0} incremento={1} />  
         <Clock/>
-        <MouseClicker name="uno"/>
+        <MouseClicker name="uno" src="aye.jpg"/>
         </div>
     )
 }
