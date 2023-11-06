@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CounterDisplay } from "./counterDisplay";
 
 export function Counter({ valoreIniziale, incremento }) {
@@ -14,6 +14,9 @@ export function Counter({ valoreIniziale, incremento }) {
         setCounter((val) => val = valoreIniziale);
     }
 
+    useEffect(() => {
+        console.log(counter);   // non ho messo altre parentesi alla variabile counter per prendere solo il valore corrente
+    })
 
     return (
 
