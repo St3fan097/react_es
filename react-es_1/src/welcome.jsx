@@ -1,15 +1,17 @@
 
-/* import { Age } from './age'; */
+import { Age } from './age';
 
 export function Welcome({name, age}) {
     return (
         <div>
             <strong>Welcome, {name || "Guest"}!</strong>
-            <p>Your age is {age}</p>
-            {age > 18 && <p>Your age is {age}</p>}
-            {age !== undefined && <p>Your age is {age}</p>}
-            {(age > 18 && age < 65) && <p>Your age is {age}</p>}
-            {age > 18 && name === "Stefano" && <p>Your age is {age}</p>}   {/*al posto di John ho messo il mio nome */}
+            <Age age={age}/>
+            {age > 18 && <Age age={age}/>}
+            {age !== undefined && <Age age={age}/>}
+            {(age > 18 && age < 65) && <Age age={age}/>}
+            {age > 18 && name === "Stefano" && <Age age={age}/>}   
         </div>
     )
 }
+
+//ora dovrebbe essere giusto, mancava il prop drilling///
