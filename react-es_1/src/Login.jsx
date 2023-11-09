@@ -15,13 +15,18 @@ function Login() {
         setRemember(el.target.checked)
     }
 
-    function onLogin() {
+    function onLogin(event) {
+        event.preventDefault();
         if (userName !== "" && password !== "" && remember) {
-            userName, password, remember;
+            console.log("Login riuscito!", userName, password, remember);
         }
+        setUserName("");
+        setPassword("");
+        setRemember(false);
     }
 
-    function resetMe(el) {
+
+    function resetMe() {
         if (userName !== "" && password !== "" && remember) {
             setUserName("");
             setPassword("");
@@ -29,22 +34,21 @@ function Login() {
         }
     }
 
-
-
     return (
         <>
-            <input type="text" placeholder="Inserisci Username" value={userName} onChange={text} />
-            <input type="password" placeholder="Password" value={password} onChange={passwordFunc} />
-            <label style={{ width: "120px", display: "flex" }}> Remember me!
-                <input type="checkbox" checked={remember} onClick={rememberMe} />
-            </label>
-            <hr></hr>
-            <button onClick={onLogin} disabled={userName === "" || password === "" || remember == false}>Login</button>
-            <button onClick={resetMe}>Reset</button>
+            <form onSubmit={onLogin}>
+                <input type="text" placeholder="Inserisci Username" value={userName} onChange={text} />
+                <input type="password" placeholder="Password" value={password} onChange={passwordFunc} />
+                <label style={{ width: "120px", display: "flex" }}> Remember me!
+                    <input type="checkbox" checked={remember} onChange={rememberMe} />
+                </label>
+                <hr></hr>
+                <button type="submit" disabled={userName === "" || password === "" || remember == false}>Login</button>
+                <button onClick={resetMe}>Reset</button>
+            </form>
         </>
     )
 }
 
-//funziona tutto ma non ho capito perchè nel browser ci sia un errore dove dice che login non è controllato
 
 export default Login
