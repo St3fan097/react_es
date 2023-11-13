@@ -2,16 +2,15 @@ export function UncontrolledLogin () {
 
     function handleFormSubmit (event){
         event.preventDefault();
-        const username = event.target.elements.namedItem("username").value
-        const password = event.target.elements.namedItem("password").value
-        const session = event.target.elements.namedItem("session").checked
+        const formData = new FormData(event.target)
 
         const data = {
-            username,
-            password,
-            session
+            username: formData.get("username"),
+            password: formData.get("password"),
+            session: formData.get("session") === "on" ? true : false
         }
-
+                                                    /* con formData è più sintetico il codice, è più comprensibile ed è supportato da molti browser
+                                                    ma si possono fare solo richieste post ed è meno reattivo*/
         console.log(data)
     }
 
