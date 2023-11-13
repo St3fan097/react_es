@@ -25,7 +25,6 @@ function Login() {
         setRemember(false);
     }
 
-
     function resetMe() {
         if (userName !== "" && password !== "" && remember) {
             setUserName("");
@@ -49,6 +48,5 @@ function Login() {
         </>
     )
 }
-
 
 export default Login
