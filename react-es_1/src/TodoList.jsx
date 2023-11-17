@@ -11,10 +11,14 @@ export function TodoList() {
     const generaToDo = () => {
         if (newTodo !== "") {
             setTodos([...todos, newTodo]);
-            setNewTodo("")
+            setNewTodo("")   //fatto nell'esercizio precedente
         }
     }
-
+    function azzeraToDo() {
+        if (todos.length > 0) {
+            setTodos([])
+        }
+    }
 
 
     return (
@@ -25,6 +29,7 @@ export function TodoList() {
                 <li key={index}>{todo}</li>
             ))}
             </ul>
+            <button onClick={azzeraToDo}>Azzera</button>
         </>
     )
 }
