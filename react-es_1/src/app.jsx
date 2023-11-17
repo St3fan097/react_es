@@ -1,4 +1,5 @@
-import { Color } from "./Color";
+
+import { TodoList } from "./TodoList";
 import { Clock } from "./clock";
 import { Counter } from "./counter";
 
@@ -11,7 +12,7 @@ export function App() {
         <div>
             <Counter valoreIniziale={0} incremento={1} />
             <Clock />
-            <Color/>
+           <TodoList/>
         </div>
     )
 }
