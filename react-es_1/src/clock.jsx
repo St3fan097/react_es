@@ -11,6 +11,6 @@ export function Clock() {
     }, []);
 
     return (
-        <p>Sono le {date.toLocaleTimeString()}</p>
+        <p className="clock">Sono le {date.toLocaleTimeString()}</p>
     )
 }
