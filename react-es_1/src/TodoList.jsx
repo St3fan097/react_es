@@ -20,13 +20,19 @@ export function TodoList() {
         }
     }
 
+    const azzeraSingleToDo = (index) => {
+        const newTodos = [...todos];
+        newTodos.splice(index, 1);
+        setTodos(newTodos);
+    };
+
 
     return (
         <>
             <input type="text" value={newTodo} onChange={changeValue} />
             <button onClick={generaToDo}>TodoList</button>
             <ul> {todos.map((todo, index) => (
-                <li key={index}>{todo}</li>
+                <li key={index}>{index}{todo}<button onClick={azzeraSingleToDo}>Azzera</button></li>
             ))}
             </ul>
             <button onClick={azzeraToDo}>Azzera</button>
