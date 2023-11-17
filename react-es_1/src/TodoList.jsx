@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import classes from "./TodoList.module.scss"
+
 export function TodoList() {
     const [todos, setTodos] = useState([])
     const [newTodo, setNewTodo] = useState('');
@@ -11,7 +13,7 @@ export function TodoList() {
     const generaToDo = () => {
         if (newTodo !== "") {
             setTodos([...todos, newTodo]);
-            setNewTodo("")   //fatto nell'esercizio precedente
+            setNewTodo("")  
         }
     }
     function azzeraToDo() {
@@ -31,7 +33,7 @@ export function TodoList() {
         <>
             <input type="text" value={newTodo} onChange={changeValue} />
             <button onClick={generaToDo}>TodoList</button>
-            <ul> {todos.map((todo, index) => (
+            <ul className={classes.ul}> {todos.map((todo, index) => (
                 <li key={index}>{index}{todo}<button onClick={azzeraSingleToDo}>Azzera</button></li>
             ))}
             </ul>
