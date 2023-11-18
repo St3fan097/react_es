@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LanguageContext } from "./LanguageContext";
 
 export function Clock() {
     const [date, setDate] = useState(new Date())
@@ -10,7 +11,9 @@ export function Clock() {
         }, 1000)
     }, []);
 
+const language = useContext(LanguageContext)
+
     return (
-        <p className="clock">Sono le {date.toLocaleTimeString()}</p>
+        <p className="clock">{language === "en" ? "Current time" : "Orario corrente"} {date.toLocaleTimeString()}</p>
     )
 }
