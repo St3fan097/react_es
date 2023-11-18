@@ -1,4 +1,5 @@
 .welcome{
     background-color: azure;
-    border: 3px solid maroon;
+    border-bottom: 3px solid red;
+    border-top: 3px solid red;
 }

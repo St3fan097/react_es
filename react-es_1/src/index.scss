@@ -1,5 +1,15 @@
 .clock {
-    background-color: yellowgreen;
-    margin: 10px;
+    background-color: azure;
+    border-bottom: 3px solid red;
+    border-top: 3px solid red;
     padding:10px;
+}
+
+.container {
+    background-color: white;
+    border: 3px solid red;
+}
+
+.hidden-content{
+    display: none;
 }
