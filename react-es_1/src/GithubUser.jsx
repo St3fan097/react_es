@@ -1,39 +1,60 @@
 import { useEffect, useState } from "react"
 
-export function GithubUser({ username }) {
+export function GithubUser() {
 
-    const [data, setData] = useState(null)
+    const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const [username, setUsername] = useState("")
+    const [usernameInput, setUsernameInput] = useState("")
 
     useEffect(() => {
+
+        if (!username) {
+            return;
+        }
         setLoading(true)
         setError(null)
+
         fetch(`https://api.github.com/users/${username}`)
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
                 setLoading(false)
-                setData(json)
+                setData((prevData) => [...prevData, json])
 
-                data.avatar_url
             })
-            .catch(error => setError(error))
+            .catch((error) => setError(error))
             .finally(() => {
                 setLoading(false)
             })
     }, [username])
 
+    function insertName(event) {
+        setUsernameInput(event.target.value)
+    }
+
+    function fetchData() {
+        setUsername(usernameInput);
+    }
 
     return (
         <>
-            <div>
-                {loading && <h1>Loading...</h1>}
-                {error && <h1>User not found</h1>}
-                {data && <div><h1>"Username: "{data.name}</h1>
-                <h2>"His logged like "{data.login}</h2>
-                <img src={data.avatar_url} alt="Ste's avatar"/></div>}
-            </div>
+            <input type="text" placeholder="Insert username" value={usernameInput} onChange={insertName} />
+            <button onClick={fetchData}>Genera</button>
+            {loading && <h1>Loading...</h1>}
+            {error && <h1>User not found</h1>}
+            <ul>
+                {data.map((user, index) => (
+                    <li key={index}>
+                        <div>
+                            <h1>"Username: "{user.name}</h1>
+                            <h2>"His logged like "{user.login}</h2>
+                            <img src={user.avatar_url} alt={`${user.login}'s avatar`} />
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }
