@@ -6,6 +6,7 @@ import { TodoList } from "./TodoList";
 import { Clock } from "./clock";
 import { Counter } from "./counter";
 import { Welcome } from "./welcome";
+import { GithubUser } from "./GithubUser";
 
 
 
@@ -22,6 +23,7 @@ export function App() {
     return (
         <Container title={<h1 style={{ margin: 0 }}>Pagina con dettagli</h1>}>
             <Welcome />
+            <GithubUser  username="Stefano"/>
             <Counter valoreIniziale={0} incremento={1} />
             <LanguageContext.Provider value={language}>
                 <Clock />
