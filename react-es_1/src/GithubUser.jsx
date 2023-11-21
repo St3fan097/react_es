@@ -42,7 +42,7 @@ function useGithubUser () {
 }
 
 export function GithubUser() {
-    const { data, loading, error, username, usernameInput, insertName, fetchData } = useGithubUser()
+    const { data, loading, error, usernameInput, insertName, fetchData } = useGithubUser()
 
 
     return (
