@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Login() {
+function useLogin(){
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [remember, setRemember] = useState(false);
@@ -32,6 +32,21 @@ function Login() {
             setRemember(false);
         }
     }
+
+    return {
+        userName,
+        password,
+        remember,
+        text,
+        passwordFunc,
+        rememberMe,
+        onLogin,
+        resetMe
+    }
+}
+
+function Login() {
+    const { userName,password, remember, text,passwordFunc, rememberMe, onLogin,resetMe } = useLogin()
 
     return (
         <>
