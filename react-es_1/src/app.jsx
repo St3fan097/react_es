@@ -24,7 +24,7 @@ export function App() {
         <Container title={<h1 style={{ margin: 0 }}>Pagina con dettagli</h1>}>
             <Welcome />
             <GithubUser  username="Stefano"/>
-            <Counter valoreIniziale={0} incremento={1} />
+            <Counter initialValue={0}/>
             <LanguageContext.Provider value={language}>
                 <Clock />
                 <button onClick={() => { switchLanguage("en") }}>EN</button>
