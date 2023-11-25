@@ -42,12 +42,14 @@ export function App() {
                 </ul>
             </nav>
             <Routes>
-                <Route path="/" element={<Welcome name="Stefano"/>} />
+                <Route path="/" element={<Welcome name="Stefano" />} />
                 <Route path="/counter" element={<Counter initialValue={0} />} />
-                <Route path="/GithubUser" element={<GithubUser username="Stefano"/>}/>
-                <Route path="/users" element={<GithubUserList />} />
-                <Route path="/users/:username" element={<ShowGithubUser />} />
-                <Route path="*" element="Route not found"/>
+                <Route path="/GithubUser" element={<GithubUser username="Stefano" />} />
+                <Route path="/users" element={<GithubUserList />}>
+                    <Route index element={<p>Add a user and select it</p>}/>
+                    <Route path="/users/:username" element={<ShowGithubUser />} />
+                </Route>
+                <Route path="*" element="Route not found" />
             </Routes>
             <LanguageContext.Provider value={language}>
                 <Clock />
