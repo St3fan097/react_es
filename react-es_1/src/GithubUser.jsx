@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+
 
 function useGithubUser () {
     const [data, setData] = useState([])
@@ -8,13 +8,6 @@ function useGithubUser () {
     const [username, setUsername] = useState("")
     const [usernameInput, setUsernameInput] = useState("")
 
-   /*  const { username: routeUsername } = useParams();
-
-    useEffect(() => {
-        if (routeUsername) {
-            setUsername(routeUsername);
-        }
-    }, [routeUsername]); */
 
     useEffect(() => {
 
