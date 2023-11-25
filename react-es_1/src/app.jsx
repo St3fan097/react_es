@@ -9,7 +9,7 @@ import { Welcome } from "./welcome";
 import { GithubUser } from "./GithubUser";
 import Login from "./Login";
 import { useCurrentLocation } from "./useCurrentLocation";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
 
 
@@ -30,10 +30,17 @@ export function App() {
 
     return (
         <Container title={<h1 style={{ margin: 0 }}>Pagina con dettagli</h1>}>
+            <nav>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/GithubUser">Login</Link></li>
+                    <li><Link to="/clock">Clock</Link></li>
+                </ul>
+            </nav>
             <Routes>
                 <Route path="/" element={<Welcome name="Stefano"/>} />
                 <Route path="/counter" element={<Counter initialValue={0} />} />
-                <Route path="/:username" element={<GithubUser/>}/>
+                <Route path="/GithubUser" element={<GithubUser username="Stefano"/>}/>
             </Routes>
             <LanguageContext.Provider value={language}>
                 <Clock />

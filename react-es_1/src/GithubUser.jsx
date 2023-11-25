@@ -8,13 +8,13 @@ function useGithubUser () {
     const [username, setUsername] = useState("")
     const [usernameInput, setUsernameInput] = useState("")
 
-    const { username: routeUsername } = useParams();
+   /*  const { username: routeUsername } = useParams();
 
     useEffect(() => {
         if (routeUsername) {
             setUsername(routeUsername);
         }
-    }, [routeUsername]);
+    }, [routeUsername]); */
 
     useEffect(() => {
 
