@@ -35,12 +35,14 @@ export function App() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/GithubUser">Login</Link></li>
                     <li><Link to="/clock">Clock</Link></li>
+                    <li><Link to="/nothing">Verifica pagina non trovata</Link></li>
                 </ul>
             </nav>
             <Routes>
                 <Route path="/" element={<Welcome name="Stefano"/>} />
                 <Route path="/counter" element={<Counter initialValue={0} />} />
                 <Route path="/GithubUser" element={<GithubUser username="Stefano"/>}/>
+                <Route path="*" element="Route not found"/>
             </Routes>
             <LanguageContext.Provider value={language}>
                 <Clock />
