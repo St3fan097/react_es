@@ -32,9 +32,9 @@ export function App() {
         <Container title={<h1 style={{ margin: 0 }}>Pagina con dettagli</h1>}>
             <Routes>
                 <Route path="/" element={<Welcome name="Stefano"/>} />
+                <Route path="/counter" element={<Counter initialValue={0} />} />
             </Routes>
             <GithubUser username="Stefano" />
-            <Counter initialValue={0} />
             <LanguageContext.Provider value={language}>
                 <Clock />
                 <button onClick={() => { switchLanguage("en") }}>EN</button>
