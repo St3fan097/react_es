@@ -33,8 +33,8 @@ export function App() {
             <Routes>
                 <Route path="/" element={<Welcome name="Stefano"/>} />
                 <Route path="/counter" element={<Counter initialValue={0} />} />
+                <Route path="/:username" element={<GithubUser/>}/>
             </Routes>
-            <GithubUser username="Stefano" />
             <LanguageContext.Provider value={language}>
                 <Clock />
                 <button onClick={() => { switchLanguage("en") }}>EN</button>
