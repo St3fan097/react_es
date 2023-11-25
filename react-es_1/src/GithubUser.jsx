@@ -7,6 +7,8 @@ function useGithubUser () {
     const [username, setUsername] = useState("")
     const [usernameInput, setUsernameInput] = useState("")
 
+
+
     useEffect(() => {
 
         if (!username) {
@@ -37,14 +39,14 @@ function useGithubUser () {
         setUsername(usernameInput);
     }
     return{
-        data, loading, error, username, usernameInput, insertName , fetchData
+        data, loading, error, usernameInput, insertName , fetchData
     }
 }
 
 export function GithubUser() {
-    const { data, loading, error, usernameInput, insertName, fetchData } = useGithubUser()
+    const { data, loading, error, usernameInput, insertName, fetchData } = useGithubUser() //nell'esercizio vecchio avevo messo username che in questo caso non serviva
 
-
+// esercizio 43 svolto già nel esercizio 42, nel caso ci sia da modificare rimandare esercizio
     return (
         <>
             <input type="text" placeholder="Insert username" value={usernameInput} onChange={insertName} />

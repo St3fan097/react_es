@@ -8,11 +8,15 @@ import { Counter } from "./counter";
 import { Welcome } from "./welcome";
 import { GithubUser } from "./GithubUser";
 import Login from "./Login";
+import { useCurrentLocation } from "./useCurrentLocation";
 
 
 
 
 export function App() {
+
+    const  {location,error,loading, getCurrentPosition } = useCurrentLocation()
+
 
 
     const [language, setLanguage] = useState("en")
@@ -34,6 +38,13 @@ export function App() {
             </LanguageContext.Provider>
             <TodoList />
             <Login/>
+        <div>
+             {loading &&  <p>Loading</p>}
+                {error && <p>Error</p>}
+                {location && <p>{location.latitude}, {location.longitude}</p>}
+                <button onClick={getCurrentPosition}>Position</button>
+        </div>
         </Container>
+
     )
 }

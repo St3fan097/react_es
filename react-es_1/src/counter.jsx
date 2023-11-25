@@ -1,25 +1,24 @@
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { CounterDisplay } from "./counterDisplay";
 
 
 
 function useCounter(initialValue) {
     const [counter, setCounter] = useState(initialValue);
-
     const direction = useRef()
 
-    function incrementa() {
+    const incrementa = useCallback(() => {
         setCounter((val) => val + 1);
         direction.current = "incrementa";
-    }
-    function decrementa() {
+    },[])
+    const decrementa = useCallback(() => {
         setCounter((val) => val - 1);
         direction.current = "decrementa";
-    }
-    function reset() {
+    }, []);
+    const reset = useCallback(() => {
         setCounter(initialValue);
         direction.current = "reset";
-    }
+    },[initialValue])
 
     useEffect(() => {
         if (direction.current === "incrementa") {
