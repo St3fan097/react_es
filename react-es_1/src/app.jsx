@@ -9,6 +9,7 @@ import { Welcome } from "./welcome";
 import { GithubUser } from "./GithubUser";
 import Login from "./Login";
 import { useCurrentLocation } from "./useCurrentLocation";
+import { FilteredList } from "./FilteredList";
 
 
 
@@ -44,6 +45,7 @@ export function App() {
                 {location && <p>{location.latitude}, {location.longitude}</p>}
                 <button onClick={getCurrentPosition}>Position</button>
         </div>
+        <FilteredList/>
         </Container>
 
     )
