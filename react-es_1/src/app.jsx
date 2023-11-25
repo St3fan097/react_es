@@ -9,14 +9,16 @@ import { Welcome } from "./welcome";
 import { GithubUser } from "./GithubUser";
 import Login from "./Login";
 import { useCurrentLocation } from "./useCurrentLocation";
-import { FilteredList } from "./FilteredList";
+import { Route, Routes } from "react-router-dom";
+
+
 
 
 
 
 export function App() {
 
-    const  {location,error,loading, getCurrentPosition } = useCurrentLocation()
+    const { location, error, loading, getCurrentPosition } = useCurrentLocation()
 
 
 
@@ -28,9 +30,11 @@ export function App() {
 
     return (
         <Container title={<h1 style={{ margin: 0 }}>Pagina con dettagli</h1>}>
-            <Welcome />
-            <GithubUser  username="Stefano"/>
-            <Counter initialValue={0}/>
+            <Routes>
+                <Route path="/" element={<Welcome name="Stefano"/>} />
+            </Routes>
+            <GithubUser username="Stefano" />
+            <Counter initialValue={0} />
             <LanguageContext.Provider value={language}>
                 <Clock />
                 <button onClick={() => { switchLanguage("en") }}>EN</button>
@@ -38,15 +42,13 @@ export function App() {
                 <hr />
             </LanguageContext.Provider>
             <TodoList />
-            <Login/>
-        <div>
-             {loading &&  <p>Loading</p>}
+            <Login />
+            <div>
+                {loading && <p>Loading</p>}
                 {error && <p>Error</p>}
                 {location && <p>{location.latitude}, {location.longitude}</p>}
                 <button onClick={getCurrentPosition}>Position</button>
-        </div>
-        <FilteredList/>
+            </div>
         </Container>
-
     )
 }
