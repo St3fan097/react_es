@@ -1,58 +1,35 @@
 import { useEffect, useState } from "react"
+import useSWR from "swr"
 
 
-function useGithubUser () {
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-    const [username, setUsername] = useState("")
-    const [usernameInput, setUsernameInput] = useState("")
+const fetcher = url => fetch(url).then(response => response.json())
 
+function useGithubUser(username){
+    const { data, error } = useSWR(`https://api.github.com/users/${username}`, fetcher)
 
-    useEffect(() => {
-
-        if (!username) {
-            return;
-        }
-        setLoading(true)
-        setError(null)
-
-        fetch(`https://api.github.com/users/${username}`)
-            .then((response) => response.json())
-            .then((json) => {
-                console.log(json)
-                setLoading(false)
-                setData((prevData) => [...prevData, json])
-
-            })
-            .catch((error) => setError(error))
-            .finally(() => {
-                setLoading(false)
-            })
-    }, [username])
-
-    function insertName(event) {
-        setUsernameInput(event.target.value)
-    }
-
-    function fetchData() {
-        setUsername(usernameInput);
-    }
-    return{
-        data, loading, error, usernameInput, insertName , fetchData
+    return {
+        data,
+        loading: !data && !error,
+        error,
     }
 }
 
 export function GithubUser() {
-    const { data, loading, error, usernameInput, insertName, fetchData } = useGithubUser() //nell'esercizio vecchio avevo messo username che in questo caso non serviva
+    const [username, setUsername] = useState("")
+    const {data, loading, error } = useGithubUser(username)
 
-// esercizio 43 svolto già nel esercizio 42, nel caso ci sia da modificare rimandare esercizio
+
+    function insertName(event) {
+        setUsername(event.target.value)
+    }
+
+
     return (
         <>
-            <input type="text" placeholder="Insert username" value={usernameInput} onChange={insertName} />
-            <button onClick={fetchData}>Genera</button>
+            <input type="text" placeholder="Insert username" value={username} onChange={insertName} />
             {loading && <h1>Loading...</h1>}
             {error && <h1>User not found</h1>}
+            {data && (
             <ul>
                 {data.map((user, index) => (
                     <li key={index}>
@@ -64,6 +41,8 @@ export function GithubUser() {
                     </li>
                 ))}
             </ul>
+
+            )}
         </>
     )
 }
