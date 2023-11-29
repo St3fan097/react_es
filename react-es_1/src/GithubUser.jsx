@@ -6,26 +6,29 @@ const fetcher = (url) => fetch(url).then((response) => response.json());
 function useGithubUser() {
     const [username, setUsername] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const { data, error } = useSWR(username ? `https://api.github.com/users/${username}` : null, fetcher);
+    const { data, error, mutate } = useSWR(username ? `https://api.github.com/users/${username}` : null, fetcher);
+
+    const fetchData = () => {
+        if (inputValue !== null) {
+            setUsername(inputValue);
+            mutate();
+        }
+    };
 
     return {
         user: data,
         loading: inputValue !== "" && (!data && !error),
         isError: error,
         inputValue,
-        setUsername,
         setInputValue,
+        fetchData,
     };
 }
 
 export function GithubUser() {
-    const { user, loading, isError, inputValue, setUsername, setInputValue } = useGithubUser();
+    const { user, loading, isError, inputValue, setInputValue, fetchData } = useGithubUser();
 
-    const fetchData = () => {
-        if (inputValue !== null) {
-            setUsername(inputValue);
-        }
-    };
+
 
     return (
         <>
