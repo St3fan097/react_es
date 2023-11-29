@@ -1,12 +1,12 @@
 import { useState } from "react";
 import useSWR from "swr";
 
-const fetcher = (url) => fetch(url).then((response) => response.json());
+
 
 function useGithubUser() {
     const [username, setUsername] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const { data, error, mutate } = useSWR(username ? `https://api.github.com/users/${username}` : null, fetcher);
+    const { data, error, mutate } = useSWR(username ? `https://api.github.com/users/${username}` : null);
 
     const fetchData = () => {
         if (inputValue !== null) {
