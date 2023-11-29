@@ -22,7 +22,7 @@ export function GithubUser() {
     const { user, loading, isError, inputValue, setUsername, setInputValue } = useGithubUser();
 
     const fetchData = () => {
-        if (inputValue) {
+        if (inputValue !== null) {
             setUsername(inputValue);
         }
     };
